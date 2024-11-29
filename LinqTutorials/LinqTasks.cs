@@ -180,9 +180,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<Emp> Task1()
         {
-            var result = Emps
-                .Where(e => e.Job == "Backend programmer");
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -190,10 +188,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<Emp> Task2()
         {
-            IEnumerable<Emp> result = Emps
-                .Where(e => e.Job == "Frontend programmer" && e.Salary > 1000)
-                .OrderByDescending(e => e.Ename);
-            return result;
+            return null;
         }
 
 
@@ -202,8 +197,7 @@ namespace LinqTutorials
         /// </summary>
         public static int Task3()
         {
-            var result = Emps.Max(e => e.Salary);
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -211,9 +205,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<Emp> Task4()
         {
-            var result = Emps
-                .Where(e => e.Salary == Emps.Max(emp => emp.Salary));
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -221,9 +213,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<object> Task5()
         {
-            IEnumerable<object> result = Emps
-                .Select(e => new { Nazwisko = e.Ename, Praca = e.Job });
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -233,13 +223,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<object> Task6()
         {
-            IEnumerable<object> result = Emps
-                .Join(Depts,
-                    emp => emp.Deptno,
-                    dept => dept.Deptno,
-                    (emp, dept) => new { emp.Ename, emp.Job, dept.Dname }
-                );
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -247,14 +231,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<object> Task7()
         {
-            IEnumerable<object> result = Emps
-                .GroupBy(emp => emp.Job)
-                .Select(group => new
-                {
-                    Praca = group.Key,
-                    LiczbaPracownikow = group.Count()
-                });
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -263,8 +240,7 @@ namespace LinqTutorials
         /// </summary>
         public static bool Task8()
         {
-            var result = Emps.Any(e => e.Job == "Backend programmer");
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -273,11 +249,7 @@ namespace LinqTutorials
         /// </summary>
         public static Emp Task9()
         {
-            var result = Emps
-                .Where(e => e.Job == "Frontend programmer")
-                .OrderByDescending(e => e.HireDate)
-                .First();
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -287,21 +259,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<object> Task10()
         {
-            var secondSet = (new[]
-            {
-                new
-                {
-                    Ename = "Brak wartości",
-                    Job = (string)null,
-                    HireDate = (DateTime?)null
-                }
-            });
-
-            IEnumerable<object> result = Emps
-                .Select(e => new { e.Ename, e.Job, e.HireDate })
-                .Union(secondSet);
-
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -317,20 +275,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<object> Task11()
         {
-            IEnumerable<object> result = Emps
-                .Join(Depts,
-                    emp => emp.Deptno,
-                    dept => dept.Deptno,
-                    (emp, dept) => new { emp, dept.Dname }
-                )
-                .GroupBy(g => g.Dname)
-                .Where(g => g.Count() > 1)
-                .Select(group => new
-                {
-                    name = group.Key.ToUpper(),
-                    numOfEmployees = group.Count()
-                });
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -342,8 +287,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<Emp> Task12()
         {
-            IEnumerable<Emp> result = Emps.GetEmpsWithSubordinates();
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -355,13 +299,7 @@ namespace LinqTutorials
         /// </summary>
         public static int Task13(int[] arr)
         {
-            var result = 0;
-            result = arr
-                .GroupBy(i => i)
-                .Select(group => new { number = group.Key, quantity = group.Count() })
-                .First(g => g.quantity % 2 == 1)
-                .number;
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -370,16 +308,7 @@ namespace LinqTutorials
         /// </summary>
         public static IEnumerable<Dept> Task14()
         {
-            var result = Depts.GroupJoin(
-                    Emps,
-                    d => d.Deptno,
-                    e => e.Deptno,
-                    (d, e) => new { d, e }
-                )
-                .Where(g => g.e.Count() > 5 || !g.e.Any())
-                .Select(g => g.d)
-                .OrderBy(d => d.Dname);
-            return result;
+            return null;
         }
     }
 
@@ -388,11 +317,7 @@ namespace LinqTutorials
         //Put your extension methods here
         public static IEnumerable<Emp> GetEmpsWithSubordinates(this IEnumerable<Emp> emps)
         {
-            var result = emps
-                .Where(e => emps.Any(e2 => e2.Mgr == e))
-                .OrderBy(e => e.Ename)
-                .ThenByDescending(e => e.Salary);
-            return result;
+            return null;
         }
     }
 }
